@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Movies Slider</title>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css' integrity='sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==' crossorigin='anonymous' referrerpolicy='no-referrer' />
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    
+    <div id="app">
+        <h1 class="title">{{movie.title}}</h1>
+        <div class="container">
+            <div class="card movie">
+                <img :src="movie.images[activeImage]" :alt="'Poster' + movie.title">
+                <div class="thumbnails">
+                    <img :src="thumb"  class="thumb" :class="activeImage === index ? 'active': '' " v-for="(thumb, index) in movie.images"></img>
+                </div>
+                <div class="navigator">
+                    <div @click="prevImage" class="prev"><i class="fa-solid fa-chevron-left"></i></div>
+                    <div  @click="nextImage" class="next"><i class="fa-solid fa-chevron-right"></i></div>
+                </div>
+                <div class="details">
+                <h3 class="title">{{movie.title}}</h3>
+                <div>Category: {{movie.category}}</div>
+                <small>Lenght: {{movie.length}}</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+    <script src="assets/js/app.js"></script>
+
+</body>
+</html>
